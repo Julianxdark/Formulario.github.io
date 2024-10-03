@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de 5 preguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .question {
+            display: none;
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .question.active {
+            display: block;
+        }
+        .result-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            background-image: url('https://images.pexels.com/photos/205780/pexels-photo-205780.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1000;
+        }
+        .result-box h2 {
+            margin-bottom: 20px;
+        }
+        .result-box img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulario de 5 preguntas</h1>
+
+    <form id="formulario" onsubmit="return false;">
+        <div class="question active" id="question1">
+            <label for="q1">1. ¿Cuál es tu nombre?</label><br>
+            <input type="text" id="q1" name="q1" required><br>
+            <button type="submit" onclick="nextQuestion(1)">Siguiente</button>
+        </div>
+
+        <div class="question" id="question2">
+            <label for="q2">2. ¿Cuál es tu edad?</label><br>
+            <input type="number" id="q2" name="q2" required><br>
+            <button type="submit" onclick="nextQuestion(2)">Siguiente</button>
+        </div>
+
+        <div class="question" id="question3">
+            <label for="q3">3. ¿Cuál es tu ciudad?</label><br>
+            <input type="text" id="q3" name="q3" required><br>
+            <button type="submit" onclick="nextQuestion(3)">Siguiente</button>
+        </div>
+
+        <div class="question" id="question4">
+            <label for="q4">4. ¿Cuál es tu ocupación?</label><br>
+            <input type="text" id="q4" name="q4" required><br>
+            <button type="submit" onclick="nextQuestion(4)">Siguiente</button>
+        </div>
+
+        <div class="question" id="question5">
+            <label for="q5">5. ¿Quieres ser mi Novia?</label><br>
+            <input type="radio" id="yes" name="q5" value="Sí" required>
+            <label for="yes">Sí</label><br>
+            <input type="radio" id="no" name="q5" value="No" required>
+            <label for="no">No</label><br>
+            <button type="submit" onclick="checkAnswer()">Enviar</button>
+        </div>
+    </form>
+
+    <div class="result-box" id="resultBox">
+        <h2>Te Amo</h2>
+        <p>Te prometo lealtad y amor incondicional...</p>
+        <img src="amor-dos-gatos.jpg" alt="amor-dos-gatos.jpg">
+    </div>
+
+    <script>
+        function nextQuestion(currentQuestion) {
+            var current = document.getElementById('question' + currentQuestion);
+            var next = document.getElementById('question' + (currentQuestion + 1));
+
+            current.classList.remove('active');
+            if (next) next.classList.add('active');
+        }
+
+        function checkAnswer() {
+            var answer = document.querySelector('input[name="q5"]:checked').value;
+            var resultBox = document.getElementById('resultBox');
+            if (answer === "Sí") {
+                resultBox.style.display = 'block';
+            } else {
+                document.getElementById('question5').classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
+

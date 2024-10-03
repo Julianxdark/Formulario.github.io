@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #f0f0f0; /* Color de fondo suave */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.question {
+    display: none;
+    width: 90%; /* Ancho del 90% para móviles */
+    max-width: 400px; /* Ancho máximo */
+    background: white; /* Fondo blanco para preguntas */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.question.active {
+    display: block;
+}
+
+/* Estilo del cuadro que aparecerá al responder la última pregunta */
+.result-box {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Ancho del 90% para móviles */
+    max-width: 400px; /* Ancho máximo */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    background-image: url('https://images.pexels.com/photos/205780/pexels-photo-205780.jpeg'); /* Fondo de corazones */
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+}
+
+.result-box h2 {
+    margin-bottom: 20px;
+}
+
+/* Estilo para la imagen dentro del cuadro de resultados */
+.result-box img {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    margin-top: 10px; /* Espacio arriba de la imagen */
+}
+
+/* Mejora de estilo para botones */
+button {
+    background-color: #007BFF; /* Color azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
